@@ -30,6 +30,16 @@ export const obterValueAleatorio = (tamanho, tipo) => {
     return aleatorio;
 }
 
+export var setSeleciona = (opcao) => {
+    let altenativa = 'AB';  
+    let selecionado = ''  
+    for (let i = 1; i <= 12; i++) {
+        let rnum = Math.floor(Math.random() * 2);
+        selecionado = altenativa.substring(rnum, rnum + 1);
+        cy.get(`#Gp${opcao}${selecionado}${i}`).click(); cy.wait(500);
+    }  
+}
+
 export const test2E2 = () => {
     cy.visit('http://127.0.0.1:8000/');
     cy.wait(2000);
@@ -60,45 +70,27 @@ export const test2E2 = () => {
 
     cy.contains('OK!').click();
 
-    cy.get('#GpAA4').click(); cy.wait(500);
-    cy.get('#GpAA5').click(); cy.wait(500);
-    cy.get('#GpAB6').click(); cy.wait(500);
-    cy.get('#GpAB8').click(); cy.wait(500);
-    cy.get('#GpAB9').click(); cy.wait(500);
+    cy.window(setSeleciona('A'))
 
     cy.wait(1000);
     cy.contains('Proximo').click();
 
-    cy.get('#GpBA1').click(); cy.wait(500);
-    cy.get('#GpBA7').click(); cy.wait(500);
-    cy.get('#GpBB3').click(); cy.wait(500);
-    cy.get('#GpBB4').click(); cy.wait(500);
+    cy.window(setSeleciona('B'))
 
     cy.wait(1000);
     cy.contains('Proximo').click();
 
-    cy.get('#GpCA9').click(); cy.wait(500);
-    cy.get('#GpCA10').click(); cy.wait(500);
-    cy.get('#GpCB4').click(); cy.wait(500);
-    cy.get('#GpCB5').click(); cy.wait(500);
-    cy.get('#GpCB7').click(); cy.wait(500);
+    cy.window(setSeleciona('C'))
+    
+    cy.wait(1000);
+    cy.contains('Proximo').click();
+
+    cy.window(setSeleciona('D'))
 
     cy.wait(1000);
     cy.contains('Proximo').click();
 
-    cy.get('#GpDA9').click(); cy.wait(500);
-    cy.get('#GpDA10').click(); cy.wait(500);
-    cy.get('#GpDB4').click(); cy.wait(500);
-    cy.get('#GpDB5').click(); cy.wait(500);
-    cy.get('#GpDB7').click(); cy.wait(500);
-
-    cy.wait(1000);
-    cy.contains('Proximo').click();
-
-    cy.get('#GpEA1').click(); cy.wait(500);
-    cy.get('#GpEA2').click(); cy.wait(500);
-    cy.get('#GpEB7').click(); cy.wait(500);
-    cy.get('#GpEB9').click(); cy.wait(500);
+    cy.window(setSeleciona('E'))
 
     cy.wait(1000);
     cy.contains('Enviar').click();
